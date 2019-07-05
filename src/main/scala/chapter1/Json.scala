@@ -20,7 +20,7 @@ object JsonWriterInstances {
     new JsonWriter[String] {
       def write(s: String) = JsString(s)
     }
-  
+
   implicit val personWriter: JsonWriter[Person] =
     new JsonWriter[Person] {
       def write(p: Person) = JsObject(Map(
@@ -36,6 +36,7 @@ object JsonWriterInstances {
 object Json {
   def toJson[A](value: A)(implicit w: JsonWriter[A]) =
     w.write(value)
+
 }
 
 // 2. Interface syntax (extension method)
